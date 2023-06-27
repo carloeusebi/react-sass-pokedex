@@ -4,6 +4,15 @@
   box-sizing: border-box;
 }
 
+/* scrollbar */
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--text-gray);
+}
+
 body {
   background-color: #b71b1b;
 }
@@ -65,12 +74,65 @@ $colors: blue, red, yellow, green;
 #screen {
   grid-area: screen;
   background-color: #343a40;
-  height: calc(85vh - 100px);
+  height: 100vh;
+  max-height: calc(800px);
   border-radius: 20px;
   border: 20px solid #dedede;
   border-top-width: 40px;
   border-bottom-width: 40px;
   background-image: linear-gradient(135deg, #343a40, white 3000px);
+  overflow: auto;
+}
+
+#pokedex {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  justify-content: center;
+}
+
+.poke-card {
+  border-radius: 10px;
+  padding: 1rem 0.5rem;
+  margin: 1rem 0.5rem;
+  text-align: center;
+}
+
+.poke-card figure {
+  background-color: rgba(255, 255, 2525, 0.6);
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  display: grid;
+  margin: auto;
+  align-items: center;
+  justify-content: center;
+}
+
+$types: (
+  "bug": #f8d5a3,
+  "electric": #fcf7de,
+  "dark": #044286,
+  "dragon": #97b3e6,
+  "fairy": #fce9ff,
+  "fighting": #e6e0d4,
+  "fire": #fddfdf,
+  "flying": #f5f5f5,
+  "ghost": #663388,
+  "grass": #defde0,
+  "ground": #f4e7da,
+  "ice": #def3fd,
+  "normal": #f5f5f5,
+  "poison": #98d7a5,
+  "psychic": #eaeda1,
+  "rock": #d5d5d4,
+  "steel": gray,
+  "water": #def3fd,
+);
+
+@each $type, $color in $types {
+  .#{$type} {
+    background-color: $color;
+  }
 }
 
 // LOADER
@@ -93,6 +155,10 @@ $colors: blue, red, yellow, green;
   .App {
     grid-template-columns: auto 720px;
   }
+
+  #pokedex {
+    grid-template-columns: repeat(3, 33%);
+  }
 }
 
 @media screen and (min-width: 992px) {
@@ -111,6 +177,10 @@ $colors: blue, red, yellow, green;
   .logo {
     justify-self: end;
   }
+
+  #pokedex {
+    grid-template-columns: repeat(5, 20%);
+  }
 }
 
 @media screen and (min-width: 1200px) {
@@ -122,6 +192,10 @@ $colors: blue, red, yellow, green;
 @media screen and (min-width: 1400px) {
   .App {
     grid-template-columns: auto 1320px;
+  }
+
+  #pokedex {
+    grid-template-columns: repeat(5, 20%);
   }
 }
 
