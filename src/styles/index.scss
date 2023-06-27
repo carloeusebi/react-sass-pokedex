@@ -6,11 +6,11 @@
 
 /* scrollbar */
 ::-webkit-scrollbar {
-  width: 5px;
+  width: 10px;
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: var(--text-gray);
+  background-color: white;
 }
 
 body {
